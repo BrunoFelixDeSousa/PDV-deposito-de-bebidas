@@ -1,0 +1,49 @@
+<div class="auth-container">
+    <h2>Cadastrar Produto</h2>
+    <form method="post" action="/gestao/produtos/cadastrarProduto">
+        <div class="form-control">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" placeholder="Nome do produto">
+        </div>
+        <div class="form-control">
+            <label for="descricao">Descrição:</label>
+            <input type="text" id="descricao" name="descricao" placeholder="Descrição do produto">
+        </div>
+        <div class="form-control">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" placeholder="Quantidade do produto">
+        </div>
+        <div class="form-control">
+            <label for="preco">Preço:</label>
+            <input type="text" id="preco" name="preco" placeholder="valor do produto, Ex: 2.50">
+        </div>
+        <div class="image-input">
+            <div class="form-control">
+                <label for="urlImagem">url da Imagem:</label>
+                <input type="text" id="urlImagem" name="urlImagem" placeholder="https://example.com/imagem" value="">
+            </div>
+            <img id="product-image" src="" alt="Image do produto" height="100px" />
+        </div>
+
+        <input type="submit" value="Cadastrar">
+        <p> Voltar ao Modulo <a href="/gestao/produtos">Produto</a></p>
+    </form>
+</div>
+
+<script>
+    const imageUrlInput = document.getElementById("urlImagem");
+    const productImage = document.getElementById("product-image");
+
+    imageUrlInput.addEventListener("blur", (e) => {
+        const url = e.target.value;
+
+        if (url === "") {
+            productImage.setAttribute("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+            imageUrlInput.setAttribute("value", "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3f/Placeholder_view_vector.svg/681px-Placeholder_view_vector.svg.png");
+            return;
+        }
+
+        productImage.setAttribute("src", url);
+        
+    })
+</script>

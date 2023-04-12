@@ -1,0 +1,35 @@
+<div class="container">
+
+    <h1 style="padding-bottom: 0.5em">Listar Produtos</h1>
+
+    <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+        <p style="padding-bottom: 1em;"> Voltar ao Modulo <a style="color: #f6982d;" href="/gestao/produtos"> Produto </a></p>
+        <p> Valor total em estoque: <span > R$ {{ valorTotal }} </span> </p>
+    </div>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"> Imagem </th>
+            <th scope="col"> Nome </th>
+            <th scope="col"> Descrição </th>
+            <th scope="col"> Preço </th>
+            <th colspan="3"> Quantidade </th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each produtos}}
+            <tr>
+                <td><img src="{{this.urlImagem}}" style="width: 70px;"></td>
+                <td>{{this.nome}}</td>
+                <td>{{this.descricao}}</td>
+                <td>{{this.preco}}</td>
+                <td>{{this.quantidade}}</td>
+                <td><a href="/gestao/produtos/atualizarProduto/{{this.id}}" class="btn-warning">editar</a> </td>
+                <td><a href="/gestao/produtos/deletarProduto/{{this.id}}" class="btn-danger">Deletar</a> </td>
+                <script> var check = {{this.id}} </script>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

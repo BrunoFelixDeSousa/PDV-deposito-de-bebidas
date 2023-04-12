@@ -1,0 +1,19 @@
+const venda = await Venda.findOne({
+    where: {
+        id: 1
+    }
+})
+
+const produtos = await venda.getProduto();
+
+
+
+
+---------------------------------------
+
+const cliente = await Cliente.findOne({
+    where: {
+        id: 10
+    },
+    include: Venda
+});

@@ -1,0 +1,22 @@
+<div class="auth-container">
+
+    <h2>Atualizar Cliente</h2>
+
+    <form method="post" action="/gestao/clientes/atualizarCliente">
+        <input type="hidden" id="id" name="id" value="{{cliente.id}}">
+        <div class="form-control">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" value="{{cliente.nome}}">
+        </div>
+        <div class="form-control">
+            <label for="telefone">Telefone:</label>
+            <input type="text" id="telefone" name="telefone" value="{{cliente.telefone}}">
+        </div>
+        <div class="form-control">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" value="{{cliente.email}}">
+        </div>
+        <input type="submit" value="Atualizar">
+        <p> Voltar ao Modulo <a href="/gestao/clientes">Cliente</a></p>
+    </form>
+</div>

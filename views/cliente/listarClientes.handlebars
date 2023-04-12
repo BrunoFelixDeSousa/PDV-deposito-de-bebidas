@@ -1,0 +1,26 @@
+<div class="container">
+    <h1 style="padding-bottom: 0.5em">Listar clientes</h1>
+    <p style="padding-bottom: 1em;"> Voltar ao Modulo <a style="color: #f6982d;" href="/gestao/clientes">Cliente</a></p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th colspan="3">Email</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each clientes}}
+            <tr>
+                <td>{{this.id}}</td>
+                <td>{{this.nome}}</td>
+                <td>{{this.telefone}}</td>
+                <td>{{this.email}}</td>
+                <td><a href="/gestao/clientes/atualizarCliente/{{this.id}}" class="btn-warning">editar</a> </td>
+                <td><a href="/gestao/clientes/deletarCliente/{{this.id}}" class="btn-danger">Deletar</a> </td>
+            </tr>
+        {{/each}}
+        </tbody>
+    </table>
+</div>

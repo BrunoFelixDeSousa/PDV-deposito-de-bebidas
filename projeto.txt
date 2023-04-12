@@ -1,0 +1,23 @@
+projeto/
+├── config/
+│   └── database.js                      ok
+├── controllers/
+│   ├── caixaController.js
+│   ├── clienteController.js
+│   ├── produtoController.js
+│   ├── transacaoController.js
+│   └── vendaController.js
+├── models/
+│   ├── Caixa.js
+│   ├── cliente.js
+│   ├── produto.js
+│   ├── transacao.js
+│   └── venda.js
+├── routes/
+│   ├── caixaRoutes.js
+│   ├── clienteRoutes.js
+│   ├── produtoRoutes.js
+│   ├── transacaoRoutes.js
+│   └── vendaRoutes.js
+├── app.js
+└── package.json

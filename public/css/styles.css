@@ -1,0 +1,393 @@
+* {
+    font-family: Helvetica;
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    color: #fff;
+}
+
+#logo img {
+    height: 40px;
+}
+
+#navbar {
+    padding: 1.2em 1.4em;
+    margin-bottom: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #222;
+    border-bottom: 1px solid #f6982d;
+    
+}
+
+#navbar ul {
+    display: flex;
+    list-style: none;
+}
+
+#navbar ul li {
+    margin-left: 1em;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    transition: 0.5s;
+    font-weight: bold;
+}
+
+#navbar ul li a:hover {
+    color: #f6982d;
+}
+
+
+/* CONTAINER */
+.message {
+    padding: 1em;
+    color: #004085;
+    background-color: #cce5ff;
+    border: 1px solid #b8daff;
+    border-radius: 5px;
+    text-align: center;
+    margin: 0 auto 2em;
+    max-width: 60%;
+}
+
+/* CONTAINER */
+.container {
+    min-height: 60vh;
+    padding: 2em;
+}
+
+/* LOGIN E REGISTER */
+.auth-container {
+    max-width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-container h2 {
+    margin-bottom: 1em;
+    color: #fff;
+    border-left: 4px solid #f6982d;
+    padding: 0.3em;
+    /*width: 100px;*/
+}
+
+.auth-container a {
+    color: #f6982d;
+}
+
+.form-control {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1em;
+}
+
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.form-control input,
+.form-control textarea {
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #f6982d;
+}
+
+form input[type='submit'],
+.btn {
+    background-color: transparent;
+    color: #f6982d;
+    border: 2px solid #f6982d;
+    padding: 0.5em 1.3em;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.btn-warning {
+    background-color: transparent;
+    color: #f6982d;
+    padding: 0.2em 1.3em;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.btn-danger {
+    background-color: transparent;
+    color: red;
+    padding: 0.2em 1.3em;
+    margin-bottom: 1em;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+form input[type='submit']:hover,
+.btn:hover {
+    background-color: #f6982d;
+    color: #fff;
+}
+
+.btn-warning:hover {
+    background-color: #f6982d;
+    color: #fff;
+}
+.btn-danger:hover {
+    background-color: red;
+    color: #fff;
+}
+/* DASHBOARD */
+.title-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
+
+.title-container h2 {
+    border-left: 4px solid #f6982d;
+    padding: 10px;
+}
+
+.dashboard h3 {
+    margin-bottom: 1.5em;
+}
+
+.dashboard ul {
+    list-style: none;
+}
+
+.dashboard li {
+    padding: 12px;
+    border-bottom: 1px solid #f6982d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard .label {
+    font-weight: bold;
+    color: #f6982d;
+    margin-right: 2em;
+}
+
+.dashboard .actions {
+    display: flex;
+}
+
+.dashboard .actions .btn {
+    color: #fff;
+    border-color: #fff;
+    margin: 0 0.5em;
+}
+
+.dashboard a {
+    color: #f6982d;
+}
+
+/* CREATE / EDIT FORM */
+.thought-form-container a {
+    color: #f6982d;
+}
+
+.thought-form-container a:hover {
+    color: #fff;
+}
+
+.thought-form-container h1 {
+    border-left: 4px solid #f6982d;
+    padding: 10px;
+    margin-top: 1em;
+}
+
+.thought-form-container form {
+    max-width: 30%;
+    margin-top: 1.5em;
+}
+
+/* HOME */
+.home-header {
+    display: flex;
+    flex-direction: column;
+    max-width: 60%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.home-header h1 {
+    margin-bottom: 1em;
+}
+
+.home-header span {
+    color: #f6982d;
+}
+
+.home-header p {
+    margin-bottom: 1.2em;
+}
+
+.home-header form {
+    margin-bottom: 1em;
+}
+
+.home-header input {
+    border: none;
+    border-bottom: 1px solid #fff;
+    padding: 0.5em;
+    margin-right: 1em;
+}
+
+.home-header input[type='text'] {
+    width: 60%;
+}
+
+.home-header input::placeholder {
+    color: #fff;
+}
+
+.order-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80%;
+    margin: 0 auto 1em;
+}
+
+.order-container span {
+    font-weight: bold;
+    color: #fff;
+}
+
+.order-container form {
+    margin: 0;
+}
+
+.order-container button {
+    margin-bottom: 0;
+    border: none;
+    cursor: pointer;
+}
+
+.order-container button:hover,
+.order-container a:hover {
+    color: #f6982d;
+}
+
+.order-container span,
+.order-container button,
+.order-container a {
+    margin: 0 10px;
+}
+
+.order-container i {
+    color: #f6982d;
+}
+
+.thoughts-container figure {
+    border-bottom: 1px solid #333;
+    padding: 0.5em;
+    max-width: 50%;
+    margin: 0 auto 1em;
+}
+
+.thoughts-container blockquote {
+    font-style: italic;
+    font-size: 2em;
+    margin-bottom: 0.4em;
+}
+
+.thoughts-container span {
+    color: #f6982d;
+}
+
+/* FOOTER */
+footer {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid #f6982d;
+}
+
+footer span {
+    font-weight: bold;
+    color: #f6982d;
+}
+
+/* TELA GESTAO */
+.menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    max-width: 300px;
+    margin: 10px;
+    text-align: center;
+    font-family: arial;
+}
+
+.card img {
+    max-width: 100%;
+}
+
+.card h2 {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 18px;
+    margin: 10px;
+    color: #f6982d;
+}
+
+.card a {
+    display: block;
+    /*background-color: #f6982d;*/
+    color: #f6982d;
+    padding: 14px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+/*.card a:hover {*/
+/*    background-color: #3e8e41;*/
+/*}*/
+/* TABELA */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.table th,
+.table td {
+    border-bottom: 1px solid black;
+    padding: 8px;
+    text-align: left;
+}
+
+.table th {
+    background-color: #f6982d;
+    color: #333;
+    font-weight: bold;
+}
