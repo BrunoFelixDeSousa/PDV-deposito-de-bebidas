@@ -63,6 +63,7 @@ app.use('/', autenticacaoRoutes)
 app.use('/gestao', ClienteRoutes)
 app.use('/gestao', ProdutoRoutes)
 app.use('/gestao', CaixaRoutes)
+app.use('/gestao', VendaRoutes)
 
 
 // Rota principal

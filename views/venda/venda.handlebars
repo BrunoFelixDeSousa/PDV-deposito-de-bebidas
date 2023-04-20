@@ -1,0 +1,63 @@
+<div class="container">
+    {{!-- <h1>Venda</h1>
+    <form method="POST" action="/venda">
+        <div class="form-control">
+            <label for="produto">Produto:</label>
+            <select id="produto" name="produto">
+                {{#each produtos}}
+                <option value="{{id}}">{{nome}}</option>
+            {{/each}}
+            </select>
+            <br>
+        </div>
+        <div class="form-control">
+            <label for="cliente">Cliente:</label>
+            <select id="cliente" name="cliente">
+                {{#each clientes}}
+                <option value="{{id}}">{{nome}}</option>
+            {{/each}}
+            </select>
+            <br>
+        </div>
+        <div class="form-control">
+            <label for="quantidade">Quantidade:</label>
+            <input type="number" id="quantidade" name="quantidade" min="1" required>
+        <br>
+        </div>
+
+        <p>Total: R${{total}}</p>
+        
+        <input type="submit" value="Efetuar venda">
+    </form> --}}
+    <h1>Lista de Produtos</h1>
+    <table class="table">
+      <thead>
+        <tr>
+            <th scope="col">Imagem</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Preço</th>
+            <th scope="col">Estoque</th>
+            <th scope="col">Quantidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each produtos}}
+          <tr>
+            <td><img src="{{this.urlImagem}}" style="width: 70px;"></td>
+            <td>{{this.nome}}</td>
+            <td>R${{this.preco}}</td>
+            <td>{{this.quantidade}}</td>
+            <td>
+              <form method="post" action="/gestao/venda/adicionar-produto">
+              
+                <input type="hidden" name="produtoId" value="{{this.id}}">
+                <input style="background-color: #f2f2f2; color: #333;padding: 8px 10px;border-radius: 5px;border: none;margin-right: 10px;font-size: 16px;"
+                 type="number" name="quantidade" min="1" max="{{this.quantidade}}">
+                <button class="btn-warning" type="submit">Adicionar</button>
+              </form>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+</div>
