@@ -112,6 +112,19 @@ form input[type='submit'],
     transition: 0.5s;
 }
 
+.btn2 {
+    background-color: transparent;
+    color: #f6982d;
+    border: 2px solid #f6982d;
+    padding: 0.5em 1.3em;
+    margin-bottom: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
 .btn-warning {
     background-color: transparent;
     color: #f6982d;
