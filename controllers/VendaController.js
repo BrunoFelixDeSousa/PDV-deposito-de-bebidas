@@ -3,6 +3,8 @@ const Venda = require('../models/Venda')
 const Produto = require('../models/produto')
 const Cliente = require('../models/cliente')
 
+const {Op} = require('sequelize')
+
 let carrinho = []
 
 // Função para adicionar um produto à lista
@@ -11,26 +13,12 @@ function adicionarProduto(produto) {
 }
 module.exports = class VendaController {
 
-
-    
-    // Função para remover um produto da lista
-    static removerProduto(produto) {
-        let index = produtos.indexOf(produto);
-        if (index !== -1) {
-        produtos.splice(index, 1);
-        }
-    }
-
-    static homeVenda(req, res) {
-        res.render('venda/venda')
-    }
-
     static async mostrarFormularioVenda(req, res) {
         try {
-            const produtos = await Produto.findAll({raw: true})
+            // const produtos = await Produto.findAll({raw: true})
             // const clientes = await Cliente.findAll({raw: true})
             // console.log(produtos, clientes)
-            res.render('venda/venda', { produtos })
+            res.render('venda/venda')
         } catch (err) {
             console.error(err)
             res.status(500).send('Erro ao buscar produtos e clientes')
@@ -39,16 +27,29 @@ module.exports = class VendaController {
 
     static async listaCompra(req, res) {
 
-        const { produtoId, quantidade } = req.body
-        const bebida = {
-            produtoId   ,
-            quantidade
+        let search = ''
+
+        if (req.query.search) {
+            search = req.query.search
         }
-        adicionarProduto(bebida)
-  
-        console.log(carrinho)
-        res.redirect('/gestao/venda')
-        
+
+        console.log("==============>" + search)
+
+        try {
+            const produto = await Produto.findAll({
+                raw: true,
+                where: {
+                    nome: {[ Op.like ]: `%${search}%`}
+                }
+            })
+            adicionarProduto(produto)
+            console.log("==============>" + produto)
+            console.log("==============>" + carrinho)
+        } catch (err) {
+            console.log(err)
+            req.flash('message', '*** ❌ Error ao buscar produto! ***')
+            res.render('venda')
+        }        
     }
 
 }
