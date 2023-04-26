@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 style="padding-bottom: 0.5em">Listar clientes</h1>
+    <h1 style="padding-bottom: 0.5em">Saldo</h1>
     <p style="padding-bottom: 1em;"> Voltar ao Modulo <a style="color: #f6982d;" href="/gestao/clientes">Cliente</a></p>
     <table class="table">
         <thead>
@@ -13,9 +13,9 @@
         </thead>
         <tbody>
             <tr>
-                <td> R$ {{ saldoCaixaformatado }} </td>
-                <td> R$ {{ valorTotalEstoque }} </td>
-                <td> R$ {{ valorTotal }} </td>
+                <td> <span id="saldoCaixaformatado"> {{ saldoCaixaformatado }} </span> </td>
+                <td> <span id="valorTotalEstoque"> {{ valorTotalEstoque }} </span> </td>
+                <td> <span id="valorTotal"> {{ valorTotal }} </span> </td>
                 {{!-- <td>{{this.nome}}</td>
                 <td>{{this.telefone}}</td>
                 <td>{{this.email}}</td> --}}
@@ -28,3 +28,22 @@
         </tbody>
     </table>
 </div>
+
+<script>
+
+    const resultado1 = document.getElementById("saldoCaixaformatado");
+    resultado1.innerHTML = maskCurrency({{ saldoCaixaformatado }});
+
+    const resultado2 = document.getElementById("valorTotalEstoque");
+    resultado2.innerHTML = maskCurrency({{ valorTotalEstoque }});
+
+    const resultado3 = document.getElementById("valorTotal");
+    resultado3.innerHTML = maskCurrency({{ valorTotal }});
+
+    function maskCurrency(valor, locale = 'pt-BR', currency = 'BRL') {
+        return new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency
+        }).format(valor)
+    } 
+</script>

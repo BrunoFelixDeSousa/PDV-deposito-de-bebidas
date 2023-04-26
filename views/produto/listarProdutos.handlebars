@@ -4,7 +4,7 @@
 
     <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
         <p style="padding-bottom: 1em;"> Voltar ao Modulo <a style="color: #f6982d;" href="/gestao/produtos"> Produto </a></p>
-        <p> Valor total em estoque: <span > R$ {{ valorTotal }} </span> </p>
+        <p> Valor total em mercadoria: <span id="valorTotal">{{ valorTotal }} </span> </p>
     </div>
 
     <table class="table">
@@ -33,3 +33,16 @@
         </tbody>
     </table>
 </div>
+
+<script>
+
+    const resultado = document.getElementById("valorTotal");
+    resultado.innerHTML = maskCurrency({{ valorTotal }});
+
+    function maskCurrency(valor, locale = 'pt-BR', currency = 'BRL') {
+        return new Intl.NumberFormat(locale, {
+            style: 'currency',
+            currency
+        }).format(valor)
+    } 
+</script>

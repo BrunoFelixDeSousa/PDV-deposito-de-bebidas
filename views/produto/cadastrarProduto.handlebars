@@ -15,7 +15,7 @@
         </div>
         <div class="form-control">
             <label for="preco">Preço:</label>
-            <input type="text" id="preco" name="preco" placeholder="valor do produto, Ex: 2.50">
+            <input type="text" required maxlength="15" {{!-- onInput="mascaraMoeda(event);" --}} id="preco" name="preco" placeholder="valor do produto, Ex: 2.50">
         </div>
         <div class="image-input">
             <div class="form-control">
@@ -46,4 +46,24 @@
         productImage.setAttribute("src", url);
         
     })
+{{!-- 
+    mascara de moeda 
+    function mascaraMoeda(event) {
+  const onlyDigits = event.target.value
+    .split("")
+    .filter(s => /\d/.test(s))
+    .join("")
+    .padStart(3, "0")
+  const digitsFloat = onlyDigits.slice(0, -2) + "." + onlyDigits.slice(-2)
+  event.target.value = maskCurrency(digitsFloat)
+}
+
+function maskCurrency(valor, locale = 'pt-BR', currency = 'BRL') {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency
+  }).format(valor)
+} 
+--}}
+
 </script>
