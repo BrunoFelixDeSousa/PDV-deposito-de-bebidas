@@ -1,104 +1,102 @@
 <div class="container">
-  {{!-- <h1>Lista de Produtos</h1>
-  <table class="table">
+
+  <h1 style="border-left: 4px solid #f6982d; padding-left: .5rem;">Venda de Bebidas</h1>
+  <p style="padding: 1em 0 1em;"> <a style="color: #f6982d;" href="/gestao"> Voltar </a></p>
+
+  <form class="form-control">
+    <div>
+      <label for="customer-name">Nome do Cliente:</label>
+      <input type="text" id="customer-name" name="customer-name">
+      <button class="btn2" type="submit">Buscar Cliente</button>
+    </div>
+  </form>
+
+
+  <form class="form-control" style="display: inline-block;" action="/gestao/venda/adicionar-produto" method="get">
+    <label for="search">Buscar bebida:</label>
+    <input type="text" id="search" name="search" size="50%">
+    <button class="btn2" type="submit" value="Buscar">Buscar</button>
+  </form>
+
+  <table id="drink-table" class="table" style="vh">
     <thead>
       <tr>
-        <th scope="col">Imagem</th>
         <th scope="col">Nome</th>
-        <th scope="col">Preço</th>
-        <th scope="col">Estoque</th>
         <th scope="col">Quantidade</th>
+        <th scope="col">Preço</th>
       </tr>
     </thead>
     <tbody>
       {{#each produtos}}
-      <tr>
-        <td><img src="{{this.urlImagem}}" style="width: 70px;"></td>
-        <td>{{this.nome}}</td>
-        <td>R${{this.preco}}</td>
-        <td>{{this.quantidade}}</td>
-        <td>
-          <form method="post" action="/gestao/venda/adicionar-produto">
-
-            <input type="hidden" name="produtoId" value="{{this.id}}">
-            <input
-              style="background-color: #f2f2f2; color: #333;padding: 8px 10px;border-radius: 5px;border: none;margin-right: 10px;font-size: 16px;"
-              type="number" name="quantidade" min="1" max="{{this.quantidade}}">
-            <button class="btn-warning" type="submit">Adicionar</button>
-          </form>
-        </td>
-      </tr>
-      {{/each}} --}}
-
-      <h1 style="border-left: 4px solid #f6982d; padding-left: .5rem;">Venda de Bebidas</h1>
-      <p style="padding: 1em 0 1em;"> <a style="color: #f6982d;" href="/gestao"> Voltar </a></p>
-
-      <form class="form-control" style="display: inline-block;" action="/gestao/venda/adicionar-produto" method="get">
-        {{!-- <div> --}}
-          <label for="search">Buscar bebida:</label>
-          <input type="text" id="search" name="search" size="50%">
-          <button class="btn2" type="submit">Buscar</button>
-          {{!--
-        </div> --}}
-      </form>
-
-      <table class="table" style="vh">
-        <thead>
-          <tr>
-            <th>Nome</th>
-            <th>Preço</th>
-            <th>Quantidade</th>
-            <th>Adicionar</th>
-          </tr>
-        </thead>
-        <tbody id="drink-list">
-          <script>
-            $(document).ready(() => {
-              $('#btn-buscar').click(() => {
-                const termoBusca = $('#campo-busca').val();
-                $.get(`/produtos/busca?q=${termoBusca}`, (produtos) => {
-                  $('#tabela-bebidas tbody').empty();
-                  produtos.forEach((produto) => {
-                    const linha = `
-          <tr>
-            <td>${produto.nome}</td>
-            <td>R$ ${produto.preco.toFixed(2)}</td>
-            <td>${produto.quantidade}</td>
-            <td>
-              <input type="number" min="1" max="${produto.quantidade}" value="1">
-              <button class="btn-adicionar" data-id="${produto.id}">Adicionar</button>
-            </td>
-          </tr>
-        `;
-                    $('#tabela-bebidas tbody').append(linha);
-                  });
-                });
-              });
-            });
-
-          </script>
-          {{!-- <tr>
-            <td>guarana</td>
-            <td>5.80</td>
-            <td>100</td>
-            <td>4</td>
-          </tr>
-        </tbody> --}}
-      </table>
-
-      <div class="form-control" style="display: inline-block; padding-top:2rem;">
-        <label for="discount">Desconto:</label>
-        <input type="number" id="discount" name="discount" min="0" max="100" value="0">
-        <button class="btn-warning" type="button" id="apply-discount">Aplicar</button>
-        <button class="btn-danger" type="button" id="clear-cart">Limpar</button>
-        <p>Total: R$ <span id="total-price">0.00</span></p>
-      </div>
-
-      <form class="form-control">
-        <div>
-          <label for="customer-name">Nome do Cliente:</label>
-          <input type="text" id="customer-name" name="customer-name">
-          <button class="btn2" type="submit">Finalizar Compra</button>
+      <tr onclick="updateSelectedDrink('{{ this.nome }}', '{{ this.preco }}')">
+        <div class="list">
+          <td scope="row"> {{ this.nome }} </td>
+          <td scope="row"> {{ this.quantidade }} </td>
+          <td scope="row"> {{ this.preco }} </td>
         </div>
-      </form>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
+
+  <br>
+  <br>
+  <br>
+
+  <div>
+    <h3> Produtos selecionado </h3>
+    <table class="table" style="vh">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Preço</th>
+          <th>Quantidade</th>
+        </tr>
+      </thead>
+      <tbody id="selected-drink-list">
+        <tr>
+          <td id="selected-drink-name"></td>
+          <td id="selected-drink-price"></td>
+          <td></td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="form-control" style="display: inline-block; padding-top:2rem;">
+    <label for="discount">Desconto (%):</label>
+    <input type="number" id="discount" name="discount" min="0" max="100" value="0">
+    <button class="btn-warning" type="button" id="apply-discount">Aplicar</button>
+    <button class="btn-danger" type="button" id="clear-cart">Limpar</button>
+    <p>Total: R$ <span id="total-price">0.00</span></p>
+  </div>
+
+  {{!-- <form class="form-control">
+    <div>
+      <label for="customer-name">Nome do Cliente:</label>
+      <input type="text" id="customer-name" name="customer-name">
+      <button class="btn2" type="submit">Finalizar Compra</button>
+    </div>
+  </form> --}}
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+  function updateSelectedDrink(nome, preco) {
+    // seleciona o elemento onde o nome da bebida será exibido
+    const selectedDrinkName = document.getElementById('selected-drink-name');
+    // seleciona o elemento onde o preço da bebida será exibido
+    const selectedDrinkPrice = document.getElementById('selected-drink-price');
+
+    // atualiza o conteúdo dos elementos com os valores extraídos da primeira coluna da tabela
+    selectedDrinkName.textContent = nome;
+    selectedDrinkPrice.textContent = preco;
+  }
+
+
+</script>
